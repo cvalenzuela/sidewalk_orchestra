@@ -1,0 +1,79 @@
+div,
+video,
+button,
+body,
+canvas {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+video {
+    display: none;
+}
+
+input {
+    display: inline;
+}
+
+.Controls{
+    position: absolute;
+    bottom: 0px;
+    margin: 1rem;
+    width: 400px;
+}
+
+.BtnCircle {
+    background: rgba(247, 247, 247, 0.856);
+    padding: 1rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.BtnCircle:hover {
+    background: rgba(224, 228, 26, 0.856);
+    transform: scale(1.02);
+}
+
+.Controls img {
+    width: 30px;
+    height: 30px;
+}
+
+#speed{
+    display: inline;
+}
+
+#canvas2send {
+    display: none;
+    position: absolute;
+    right: -80px;
+    transform: scale(0.5);
+    top: -70px;
+}
+
+#log {
+    position: absolute;
+    top: 0px;
+    margin: 1rem;
+    background: white;
+    padding: 0.2rem;
+}
+
+#start {
+    position: absolute;
+    border:none;
+    margin: 1rem;
+    padding: 0.2rem;
+}

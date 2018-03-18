@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Sidewalk Orchestra</title>
+
+</head>
+
+<body> 
+  <p id="log">not connected</p>
+  <video id="video" width="432" height="368" autoplay src='./src/video/nyc.mp4' crossorigin="anonymous" loop></video>
+  <canvas id="canvas2send" width="432" height="368"></canvas>
+
+  <div class="Controls">
+    <div id="playPause" class="BtnCircle">
+        <img src="assets/svg/start.svg"/>
+    </div>
+    <div id="speed" >
+        <input type="range" id="videoSpeed">
+    </div>
+  </div>
+  
+  <script src="dist/bundle.js"></script>
+</body>
+
+</html>

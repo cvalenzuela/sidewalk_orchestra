@@ -1,3 +1,8 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 div,
 video,
 button,
@@ -31,6 +36,33 @@ input {
     display: inline;
 }
 
+h1{
+  font-size: 1.4rem;
+  font-family: 'PT Serif', serif;
+  margin: 0px;
+  background: white;
+}
+
+h1 span{
+  background: black;
+  color:rgb(235, 235, 235);
+}
+
+#log {
+  display: none;
+  margin: 0rem;
+  font-size: 12px;
+  padding: 0px 0px 0px 0.2rem;
+  background: white;
+}
+
+#title {
+  position: absolute;
+  top: 0px;
+  opacity: 0.8;
+  padding: 1rem 0px 0px 1rem;
+}
+
 .Controls{
     position: absolute;
     bottom: 0px;
@@ -39,7 +71,7 @@ input {
 }
 
 .BtnCircle {
-    background: rgba(247, 247, 247, 0.856);
+    background: rgba(236, 236, 236, 0.705);
     padding: 1rem;
     border-radius: 50%;
     width: 20px;
@@ -49,7 +81,7 @@ input {
 }
 
 .BtnCircle:hover {
-    background: rgba(126, 255, 198, 0.96);
+    background: rgb(255, 255, 255);
     transform: scale(1.02);
 }
 
@@ -60,7 +92,7 @@ input {
 
 #speed{
     display: block;
-    width: 270px;
+    width: 330px;
     margin: 1rem 0px 0px 0rem;
 }
 
@@ -72,19 +104,25 @@ input {
     top: -70px;
 }
 
-#log {
-    position: absolute;
-    top: 0px;
-    margin: 1rem;
-    background: white;
-    padding: 0.2rem;
-}
-
 #start {
     position: absolute;
     border:none;
     margin: 1rem;
     padding: 0.2rem;
+}
+
+.Instruments{
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.Instruments img{
+  width: 30px;
+}
+
+.Instruments img:hover{
+  transform: scale(1.09)
 }
 
 input[type=range].slider {
@@ -110,7 +148,7 @@ input[type=range].slider {
     height: 12px;
     width: 24px;
     border-radius: 0px;
-    background: rgba(126, 255, 198, 0.96);
+    background: #010101;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: 0.95px;
@@ -133,7 +171,7 @@ input[type=range].slider {
     height: 12px;
     width: 24px;
     border-radius: 0px;
-    background: rgba(126, 255, 198, 0.96);
+    background: #010101;
     cursor: pointer;
   }
   input[type=range].slider::-ms-track {
@@ -161,7 +199,7 @@ input[type=range].slider {
     border: 0px solid rgba(0, 0, 0, 0);
     width: 24px;
     border-radius: 0px;
-    background: rgba(126, 255, 198, 0.96);
+    background: #010101;
     cursor: pointer;
     height: 12px;
   }

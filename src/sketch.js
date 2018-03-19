@@ -7,7 +7,7 @@ import TWEEN from '@tweenjs/tween.js';
 import { startWebcam } from './webcam';
 import { CONNECTIONS, SIZE } from './const';
 import { updateCanvas2send, sendCanvas } from './canvas2send';
-import { world } from './Circle';
+import { world } from './Rectangle';
 
 const fullWidth = window.innerWidth;
 const fullHeight = window.innerHeight;
@@ -30,6 +30,7 @@ const doneDrawing = true;
 const app = new PIXI.Application(OPTIONS);
 app.view.id = 'pixiCanvas'
 const container = new PIXI.Container();
+const rectangles = new PIXI.Container();
 const graphics = new PIXI.Graphics();
 const videoTexture = new PIXI.Texture.fromVideo(document.getElementById('video'));
 // startWebcam();
@@ -42,6 +43,7 @@ const init = () => {
   container.addChild(graphics);
   app.stage.addChild(videoSprite);
   app.stage.addChild(container);
+  app.stage.addChild(rectangles);
   videoSprite.width = fullWidth;
   videoSprite.height = fullHeight;
 }
@@ -61,7 +63,7 @@ const circle = (x, y) => {
 }
 
 const line = (x1, y1, x2, y2) => {
-  graphics.lineStyle(3, 0x7effc6, 1);
+  graphics.lineStyle(3, 0x000000, 1);
   graphics.moveTo(x1, y1);
   graphics.lineTo(x2, y2);
 }
@@ -109,7 +111,7 @@ const playOnCollision = (x1, y1, x2, y2) => {
   world.bodies.forEach(body => {
     const collision1 = Matter.Query.point(world.bodies, {x: x1, y: y1});
     const collision2 = Matter.Query.point(world.bodies, {x: x2, y: y2});
-    collision1.forEach(e => e.pixiCircle.playCollision());
+    collision1.forEach(e => e.pixiRectangle.playCollision());
   })
 }
 
@@ -134,4 +136,5 @@ export {
   drawCircles,
   clearCanvas,
   changeLoop,
+  rectangles
 }

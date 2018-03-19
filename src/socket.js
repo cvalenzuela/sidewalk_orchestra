@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import { sendCanvas } from './canvas2send';
 import { drawHuman, clearCanvas } from './sketch';
 
-const socket = io.connect('http://localhost:33000/query');
+const socket = io.connect('http://64.62.141.30:33000/query');
 socket.on('connect', () => {
   log.innerHTML = 'connected';
 });

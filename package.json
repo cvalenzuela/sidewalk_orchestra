@@ -19,7 +19,10 @@
     "watchify": "3.9.0"
   },
   "dependencies": {
+    "@tweenjs/tween.js": "17.2.0",
+    "matter-js": "0.14.1",
     "pixi.js": "4.7.0",
-    "socket.io": "2.0.4"
+    "socket.io": "2.0.4",
+    "tone": "0.11.11"
   }
 }

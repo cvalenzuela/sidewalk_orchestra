@@ -1,28 +1,38 @@
 // Pixi Sketch
 
 import * as PIXI from 'pixi.js';
+import Matter from 'matter-js';
+import TWEEN from '@tweenjs/tween.js';
 
-import { startVideo } from './video';
+import { startWebcam } from './webcam';
 import { CONNECTIONS, SIZE } from './const';
-import { updateCanvas2send } from './canvas2send';
+import { updateCanvas2send, sendCanvas } from './canvas2send';
+import { world } from './Circle';
 
 const fullWidth = window.innerWidth;
 const fullHeight = window.innerHeight;
+
+let loop = false;
 
 const OPTIONS = {
   antialias: true,
   width: fullWidth,
   height: fullHeight, 
   resolution: 1,
-  smoothProperty: true,
+  transparent: true,
+  legacy:true,
+  forceCanvas: true
 }
 
+const doneDrawing = true;
+
 // App & Renderer
-const canvas2show = new PIXI.Application(OPTIONS);
+const app = new PIXI.Application(OPTIONS);
+app.view.id = 'pixiCanvas'
 const container = new PIXI.Container();
 const graphics = new PIXI.Graphics();
 const videoTexture = new PIXI.Texture.fromVideo(document.getElementById('video'));
-// startVideo();
+// startWebcam();
 
 // Create a new Sprite using the video texture
 const videoSprite = new PIXI.Sprite(videoTexture);
@@ -30,8 +40,8 @@ const videoSprite = new PIXI.Sprite(videoTexture);
 const init = () => {
   requestAnimationFrame(animate);
   container.addChild(graphics);
-  canvas2show.stage.addChild(videoSprite);
-  canvas2show.stage.addChild(container);
+  app.stage.addChild(videoSprite);
+  app.stage.addChild(container);
   videoSprite.width = fullWidth;
   videoSprite.height = fullHeight;
 }
@@ -39,7 +49,8 @@ const init = () => {
 const animate = () => {
   requestAnimationFrame(animate);
   updateCanvas2send();
-  canvas2show.renderer.render(canvas2show.stage);
+  TWEEN.update();
+  app.renderer.render(app.stage);
 }
 
 const circle = (x, y) => {
@@ -50,7 +61,7 @@ const circle = (x, y) => {
 }
 
 const line = (x1, y1, x2, y2) => {
-  graphics.lineStyle(4, 0xff0000aa, 1);
+  graphics.lineStyle(3, 0x7effc6, 1);
   graphics.moveTo(x1, y1);
   graphics.lineTo(x2, y2);
 }
@@ -59,8 +70,8 @@ const clearCanvas = () => {
   graphics.clear();
 }
 
-const drawHuman = human => {
-  CONNECTIONS.forEach((connection, i) => {
+const drawHuman = (human, totalHumans, humanIndex) => {
+  CONNECTIONS.forEach((connection, connectionIndex) => {
     let start = null;
     let end = null;
     human.forEach(bodyPart => {
@@ -72,9 +83,34 @@ const drawHuman = human => {
       }
     });
     if (start && end) {
-      line(start[1] * fullWidth, start[2] * fullHeight, end[1] * fullWidth, end[2] * fullHeight);
+      const x1 = start[1] * fullWidth;
+      const y1 = start[2] * fullHeight;
+      const x2 = end[1] * fullWidth;
+      const y2 = end[2] * fullHeight;
+      line(x1, y1, x2, y2);
+      playOnCollision(x1, y1, x2, y2);
+    }
+    // Once looped over all humans and all possible connections, send canvas again
+    if(totalHumans === humanIndex + 1 && CONNECTIONS.length === connectionIndex + 1 ) {
+      if (loop) {
+        setTimeout(() => sendCanvas(), 50);
+      } else {
+        clearCanvas();
+      }
     }
   });
+}
+
+const changeLoop = () => {
+  loop = !loop;
+}
+
+const playOnCollision = (x1, y1, x2, y2) => {
+  world.bodies.forEach(body => {
+    const collision1 = Matter.Query.point(world.bodies, {x: x1, y: y1});
+    const collision2 = Matter.Query.point(world.bodies, {x: x2, y: y2});
+    collision1.forEach(e => e.pixiCircle.playCollision());
+  })
 }
 
 const drawCircles = human => {
@@ -83,12 +119,19 @@ const drawCircles = human => {
   });
 }
 
+const checkForCollision = (x1, y1, x2, y2) => {
+  Matter.Detector.canCollide(filterA, filterB)
+}
+
 init();
-document.body.appendChild(canvas2show.renderer.view);
+document.body.appendChild(app.renderer.view);
 
 export {
-  canvas2show,
+  app,
+  loop,
+  doneDrawing,
   drawHuman,
   drawCircles,
   clearCanvas,
+  changeLoop,
 }

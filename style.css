@@ -20,6 +20,11 @@ p {
 
 video {
     display: none;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 input {
@@ -37,22 +42,26 @@ input {
     background: rgba(247, 247, 247, 0.856);
     padding: 1rem;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin: 0px 1rem 0px 0rem;
 }
 
 .BtnCircle:hover {
-    background: rgba(224, 228, 26, 0.856);
+    background: rgba(126, 255, 198, 0.96);
     transform: scale(1.02);
 }
 
 .Controls img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 #speed{
-    display: inline;
+    display: block;
+    width: 270px;
+    margin: 1rem 0px 0px 0rem;
 }
 
 #canvas2send {
@@ -77,3 +86,89 @@ input {
     margin: 1rem;
     padding: 0.2rem;
 }
+
+input[type=range].slider {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: -0.95px 0;
+  }
+  input[type=range].slider:focus {
+    outline: none;
+  }
+  input[type=range].slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 13.9px;
+    cursor: pointer;
+    box-shadow: 1px 1px 8.9px rgba(0, 0, 0, 0.14), 0px 0px 1px rgba(13, 13, 13, 0.14);
+    background: rgba(247, 247, 247, 0.856);
+    border-radius: 0px;
+    border: 0px solid #010101;
+  }
+  input[type=range].slider::-webkit-slider-thumb {
+    box-shadow: 0.8px 0.8px 3.5px #000000, 0px 0px 0.8px #0d0d0d;
+    border: 0px solid rgba(0, 0, 0, 0);
+    height: 12px;
+    width: 24px;
+    border-radius: 0px;
+    background: rgba(126, 255, 198, 0.96);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: 0.95px;
+  }
+  input[type=range].slider:focus::-webkit-slider-runnable-track {
+    background: rgba(247, 247, 247, 0.856);
+  }
+  input[type=range].slider::-moz-range-track {
+    width: 100%;
+    height: 13.9px;
+    cursor: pointer;
+    box-shadow: 1px 1px 8.9px rgba(0, 0, 0, 0.14), 0px 0px 1px rgba(13, 13, 13, 0.14);
+    background: rgba(247, 247, 247, 0.856);
+    border-radius: 0px;
+    border: 0px solid #010101;
+  }
+  input[type=range].slider::-moz-range-thumb {
+    box-shadow: 0.8px 0.8px 3.5px #000000, 0px 0px 0.8px #0d0d0d;
+    border: 0px solid rgba(0, 0, 0, 0);
+    height: 12px;
+    width: 24px;
+    border-radius: 0px;
+    background: rgba(126, 255, 198, 0.96);
+    cursor: pointer;
+  }
+  input[type=range].slider::-ms-track {
+    width: 100%;
+    height: 13.9px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type=range].slider::-ms-fill-lower {
+    background: rgba(247, 247, 247, 0.856);
+    border: 0px solid #010101;
+    border-radius: 0px;
+    box-shadow: 1px 1px 8.9px rgba(0, 0, 0, 0.14), 0px 0px 1px rgba(13, 13, 13, 0.14);
+  }
+  input[type=range].slider::-ms-fill-upper {
+    background: rgba(247, 247, 247, 0.856);
+    border: 0px solid #010101;
+    border-radius: 0px;
+    box-shadow: 1px 1px 8.9px rgba(0, 0, 0, 0.14), 0px 0px 1px rgba(13, 13, 13, 0.14);
+  }
+  input[type=range].slider::-ms-thumb {
+    box-shadow: 0.8px 0.8px 3.5px #000000, 0px 0px 0.8px #0d0d0d;
+    border: 0px solid rgba(0, 0, 0, 0);
+    width: 24px;
+    border-radius: 0px;
+    background: rgba(126, 255, 198, 0.96);
+    cursor: pointer;
+    height: 12px;
+  }
+  input[type=range].slider:focus::-ms-fill-lower {
+    background: rgba(247, 247, 247, 0.856);
+  }
+  input[type=range].slider:focus::-ms-fill-upper {
+    background: rgba(247, 247, 247, 0.856);
+  }
+  

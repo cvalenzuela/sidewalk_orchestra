@@ -63,7 +63,7 @@ const circle = (x, y) => {
 }
 
 const line = (x1, y1, x2, y2) => {
-  graphics.lineStyle(3, 0x000000, 1);
+  graphics.lineStyle(3, 0xFFFFFF, 1);
   graphics.moveTo(x1, y1);
   graphics.lineTo(x2, y2);
 }

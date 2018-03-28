@@ -2,9 +2,9 @@
 
 An experimental musical app using pose estimation of a live sidewalk video stream.
 
-### [Demo Video](Video)
+### [Demo Video](https://youtu.be/Sz0IXDZDiWc)
 
-![demo](assets/demo.gif)
+[![demo](assets/demo.gif)](https://youtu.be/Sz0IXDZDiWc)
 
 ## Development
 

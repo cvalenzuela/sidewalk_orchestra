@@ -72,7 +72,7 @@ const clearCanvas = () => {
   graphics.clear();
 }
 
-const drawHuman = (human, totalHumans, humanIndex) => {
+const drawHuman = (human, totalHumans, humanIndex, start_ms) => {
   CONNECTIONS.forEach((connection, connectionIndex) => {
     let start = null;
     let end = null;
@@ -95,7 +95,7 @@ const drawHuman = (human, totalHumans, humanIndex) => {
     // Once looped over all humans and all possible connections, send canvas again
     if(totalHumans === humanIndex + 1 && CONNECTIONS.length === connectionIndex + 1 ) {
       if (loop) {
-        setTimeout(() => sendCanvas(), 50);
+        sendCanvas(start_ms)
       } else {
         clearCanvas();
       }
